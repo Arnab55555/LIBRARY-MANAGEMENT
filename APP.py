@@ -26,13 +26,13 @@ def signin():
     print(Password)
     database_connection=sqlite3.connect("LIBRARY.db")
     database_cursor = database_connection.cursor()
-    database_cursor.execute("select (USER_NAME) from USER")
-    result1=database_cursor.fetchall()
-    database_cursor.execute("select (PASSWORD) from USER")
-    result2 = database_cursor.fetchall()
+    database_cursor.execute("select * from USER where USER_NAME=? and PASSWORD=? ",(Username,Password))
+    result=database_cursor.fetchone()
+    # database_cursor.execute("select (PASSWORD) from USER")
+    # result2 = database_cursor.fetchall()
     
 
-    if (Username==result1 and Password==result2):
+    if result:
        screen=Toplevel(root)
        screen.title("App")
        screen.geometry('925x500+300+200')
@@ -109,4 +109,3 @@ sign_up= Button(frame,width=6,text='sign up',border=0,bg='white',cursor='hand2',
 sign_up.place(x=215,y=270)
 root.mainloop()
 
-print("hello")
