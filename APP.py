@@ -28,8 +28,7 @@ def signin():
     database_cursor = database_connection.cursor()
     database_cursor.execute("select * from USER where USER_NAME=? and PASSWORD=? ",(Username,Password))
     result=database_cursor.fetchone()
-    # database_cursor.execute("select (PASSWORD) from USER")
-    # result2 = database_cursor.fetchall()
+    
     
 
     if result:
