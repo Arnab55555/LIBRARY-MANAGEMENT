@@ -47,11 +47,9 @@ def signin():
         #messagebox.showerror("Invalid","Invalid password") 
 
     else:
-        top.geometry("150x150")
-        messagebox.showinfo("Error","Wrong input..!")
+        messagebox.showerror("Invalid","Please input correct username or password...!")
         database_connection.commit()
         database_connection.close()
-        top.mainloop()   
 
 img = ImageTk.PhotoImage(Image.open("pl.jpg"))
 Label(root,image=img,border=0,bg='white').place(x=0,y=0)
