@@ -24,7 +24,7 @@ same=True
 n=0.25
 
 # Adding a background image
-background_image =Image.open("lib.jpg")
+background_image =Image.open("IMAGES\lib.jpg")
 [imageSizeWidth, imageSizeHeight] = background_image.size
 
 newImageSizeWidth = int(imageSizeWidth*n)
