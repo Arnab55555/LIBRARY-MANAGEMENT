@@ -47,10 +47,6 @@ def signin():
         #messagebox.showerror("Invalid","Invalid password") 
 
     else:
-        print(result1)
-        print(result2)
-        print(Username)
-        print(Password)
         print("Wrong input")
         database_connection.commit()
         database_connection.close()   
