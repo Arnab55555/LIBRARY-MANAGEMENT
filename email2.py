@@ -6,9 +6,9 @@ import smtplib
 
 
 
-email_sender = ''
-email_password = ''
-email_reciever = ''
+email_sender = 'autolibpy@gmail.com'
+email_password = 'epemdruoebcgmtta'
+email_reciever = 'mumbaikarprerna@gmail.com'
 
 subject = 'test mail'
 body = """
