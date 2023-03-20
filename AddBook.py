@@ -11,6 +11,10 @@ def bookRegister():
     status = bookInfo4.get()
     status = status.lower()
     
+    database_connection = sqlite3.connect("LIBRARY.db")
+    database_cursor = database_connection.cursor()
+
+
     insertBooks = "insert into "+bookTable+" values('"+bid+"','"+title+"','"+author+"','"+status+"')"
     try:
         cur.execute(insertBooks)
