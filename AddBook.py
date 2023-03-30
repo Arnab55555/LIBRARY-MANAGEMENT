@@ -40,8 +40,9 @@ def bookRegister():
     
 def addBook(): 
     
-    global bookInfo1,bookInfo2,bookInfo3,bookInfo5,bookInfo6,bookInfo7,bookInfo4,Canvas1,con,cur,bookTable,root
-    
+    global bookInfo1,bookInfo2,bookInfo3,bookInfo5,bookInfo6,bookInfo7,Canvas1,con,cur,bookTable,root
+    # bookInfo4
+
     root = Tk()
     root.title("Library")
     root.minsize(width=400,height=400)
