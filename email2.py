@@ -8,11 +8,12 @@ import smtplib
 
 email_sender = 'autolibpy@gmail.com'
 email_password = 'epemdruoebcgmtta'
-email_reciever = 'mumbaikarprerna@gmail.com'
+email_reciever = 'deadsoul079@gmail.com'
 
 subject = 'test mail'
 body = """
 I am trying email automation using python.
+hi amit!!!!
 """
 
 
