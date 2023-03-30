@@ -7,18 +7,22 @@ def bookRegister():
     
     bid = bookInfo1.get()
     title = bookInfo2.get()
+    btype = bookInfo5.get()
+    price = bookInfo6.get()
+    bcount = bookInfo7.get()
     author = bookInfo3.get()
-    status = bookInfo4.get()
-    status = status.lower()
+    # status = bookInfo4.get()
+    # status = status.lower()
     
     database_connection = sqlite3.connect("LIBRARY.db")
     database_cursor = database_connection.cursor()
 
 
-    insertBooks = "insert into "+bookTable+" values('"+bid+"','"+title+"','"+author+"','"+status+"')"
+    insertBooks = "insert into "+bookTable+" values('"+bid+"','"+title+"','"+btype+"','"+price+"','"+bcount+"','"+author+"')"
     try:
-        cur.execute(insertBooks)
-        con.commit()
+        database_cursor.execute(insertBooks)
+        database_connection.commit()
+        database_connection.close()
         messagebox.showinfo('Success',"Book added successfully")
     except:
         messagebox.showinfo("Error","Can't add data into Database")
@@ -26,14 +30,17 @@ def bookRegister():
     print(bid)
     print(title)
     print(author)
-    print(status)
+    # print(status)
+    print(btype)
+    print(bcount)
+    print(price)
 
 
     root.destroy()
     
 def addBook(): 
     
-    global bookInfo1,bookInfo2,bookInfo3,bookInfo4,Canvas1,con,cur,bookTable,root
+    global bookInfo1,bookInfo2,bookInfo3,bookInfo5,bookInfo6,bookInfo7,bookInfo4,Canvas1,con,cur,bookTable,root
     
     root = Tk()
     root.title("Library")
@@ -48,7 +55,7 @@ def addBook():
     cur = con.cursor()
 
     # Enter Table Names here
-    bookTable = "books" # Book Table
+    bookTable = "BOOKS" # Book Table
 
     Canvas1 = Canvas(root)
     
@@ -87,11 +94,32 @@ def addBook():
     bookInfo3.place(relx=0.3,rely=0.50, relwidth=0.62, relheight=0.08)
         
     # Book Status
-    lb4 = Label(labelFrame,text="Status(Avail/issued) : ", bg='black', fg='white')
-    lb4.place(relx=0.05,rely=0.65, relheight=0.08)
+    # lb4 = Label(labelFrame,text="Status(Avail/issued) : ", bg='black', fg='white')
+    # lb4.place(relx=0.05,rely=0.65, relheight=0.08)
         
-    bookInfo4 = Entry(labelFrame)
-    bookInfo4.place(relx=0.3,rely=0.65, relwidth=0.62, relheight=0.08)
+    # bookInfo4 = Entry(labelFrame)
+    # bookInfo4.place(relx=0.3,rely=0.65, relwidth=0.62, relheight=0.08)
+
+    # Book type
+    lb5 = Label(labelFrame,text="Book Type : ", bg='black', fg='white')
+    lb5.place(relx=0.05,rely=0.65, relheight=0.08)
+        
+    bookInfo5 = Entry(labelFrame)
+    bookInfo5.place(relx=0.3,rely=0.65, relwidth=0.62, relheight=0.08)
+
+    # Book price
+    lb6 = Label(labelFrame,text="Book Price : ", bg='black', fg='white')
+    lb6.place(relx=0.05,rely=0.80, relheight=0.08)
+        
+    bookInfo6 = Entry(labelFrame)
+    bookInfo6.place(relx=0.3,rely=0.80, relwidth=0.62, relheight=0.08)
+
+    # Book count
+    lb7 = Label(labelFrame,text="Number of book : ", bg='black', fg='white')
+    lb7.place(relx=0.05,rely=1.05, relheight=0.08)
+        
+    bookInfo7 = Entry(labelFrame)
+    bookInfo7.place(relx=0.3,rely=1.05, relwidth=0.62, relheight=0.08)
         
     #Submit Button
     SubmitBtn = Button(root,text="SUBMIT",bg='#d1ccc0', fg='black',command=bookRegister)
