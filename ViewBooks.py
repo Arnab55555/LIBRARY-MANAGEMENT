@@ -7,8 +7,8 @@ import sqlite3
 # mypass = "root"
 # mydatabase="db"
 
-con = sqlite3.connemydatabase)
-cur = con.cursor()
+# con = sqlite3.connect(database=mydatabase)
+# cur = con.cursor()
 
 # Enter Table Names here
 bookTable = "BOOKS" 
