@@ -49,11 +49,11 @@ def addBook():
     root.geometry("600x500")
 
     # Add your own database name and password here to reflect in the code
-    mypass = "root"
-    mydatabase="db"
+    # mypass = "root"
+    # mydatabase="db"
 
-    con = sqlite3.connect(database=mydatabase)
-    cur = con.cursor()
+    # con = sqlite3.connect(database=mydatabase)
+    # cur = con.cursor()
 
     # Enter Table Names here
     bookTable = "BOOKS" # Book Table

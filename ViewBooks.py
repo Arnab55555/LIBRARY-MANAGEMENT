@@ -4,14 +4,14 @@ from tkinter import messagebox
 import sqlite3
 
 # Add your own database name and password here to reflect in the code
-mypass = "root"
-mydatabase="db"
+# mypass = "root"
+# mydatabase="db"
 
-con = sqlite3.connect(database=mydatabase)
+con = sqlite3.connemydatabase)
 cur = con.cursor()
 
 # Enter Table Names here
-bookTable = "books" 
+bookTable = "BOOKS" 
     
 def View(): 
     
