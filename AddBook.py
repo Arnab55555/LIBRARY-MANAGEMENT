@@ -2,6 +2,11 @@ from tkinter import *
 from PIL import ImageTk,Image
 from tkinter import messagebox
 import sqlite3
+import os
+import email
+from email.message import EmailMessage
+import ssl
+import smtplib
 
 def bookRegister():
     
@@ -21,9 +26,52 @@ def bookRegister():
     insertBooks = "insert into "+bookTable+" values('"+bid+"','"+title+"','"+btype+"','"+price+"','"+bcount+"','"+author+"');"
     try:
         database_cursor.execute(insertBooks)
-        database_connection.commit()
+        
+        
+        
+
+        e = database_cursor.execute('''SELECT EMAIL FROM USER;''')
+
+        for i in e:
+
+            email_sender = 'autolibpy@gmail.com'
+            email_password = 'epemdruoebcgmtta'
+            email_reciever = i[0]
+
+            print(email_reciever)
+
+            subject = 'test mail'
+            body = """
+            Hi,
+            Checkout our new book: """ +title+""" 
+            written by,
+                      """ +author+"""
+
+
+
+
+            THANK YOU!!!!
+            """
+
+
+            em = EmailMessage()
+            em['From'] = email_sender
+            em['To']  = email_reciever
+            em['subject'] = subject
+            em.set_content(body)
+
+            context = ssl.create_default_context()
+
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+                smtp.login(email_sender, email_password)
+                smtp.sendmail(email_sender, email_reciever, em.as_string())
+
+
+        database_connection.commit()    
         database_connection.close()
         messagebox.showinfo('Success',"Book added successfully")
+
+
     except:
         messagebox.showinfo("Error","Can't add data into Database")
     
@@ -35,7 +83,6 @@ def bookRegister():
     print(btype)
     print(bcount)
     print(price)
-
 
     root.destroy()
     
