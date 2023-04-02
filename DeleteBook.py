@@ -27,7 +27,7 @@ def deleteBook():
     try:
         print(deleteSql)
         database_cursor.execute(deleteSql)
-        database_cursor.commit()
+        database_connection.commit()
         # cur.execute(deleteIssue)
         # con.commit()
         database_connection.close()
