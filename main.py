@@ -8,11 +8,11 @@ from ViewBooks import *
 from IssueBook import *
 from ReturnBook import *
 # Add your own database name and password here to reflect in the code
-mypass = "root"
-mydatabase="db"
+# mypass = "root"
+# mydatabase="db"
 
-con = sqlite3.connect(database=mydatabase)
-cur = con.cursor()
+database_connection = sqlite3.connect("LIBRARY.db")
+database_cursor = database_connection.cursor()
 
 root = Tk()
 root.title("Library")
