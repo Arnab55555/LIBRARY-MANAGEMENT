@@ -30,7 +30,7 @@ def deleteBook():
         database_connection.commit()
         # cur.execute(deleteIssue)
         # con.commit()
-        database_connection.close()
+        
         messagebox.showinfo('Success',"Book Record Deleted Successfully")
     except:
         messagebox.showinfo("Please check Book ID")
@@ -40,7 +40,9 @@ def deleteBook():
 
     bookInfo1.delete(0, END)
     root.destroy()
-    
+    # database_connection.close()
+
+
 def delete(): 
     
     global bookInfo1,bookInfo2,bookInfo3,bookInfo5,bookInfo6,bookInfo7,Canvas1,con,cur,bookTable,root
