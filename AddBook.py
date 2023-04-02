@@ -21,7 +21,7 @@ def bookRegister():
     insertBooks = "insert into "+bookTable+" values('"+bid+"','"+title+"','"+btype+"','"+price+"','"+bcount+"','"+author+"')"
     try:
         database_cursor.execute(insertBooks)
-        database_connection.commit()
+        database_cursor.commit()
         database_connection.close()
         messagebox.showinfo('Success',"Book added successfully")
     except:

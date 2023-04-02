@@ -4,28 +4,33 @@ from tkinter import messagebox
 import sqlite3
 
 # Add your own database name and password here to reflect in the code
-mypass = "root"
-mydatabase="db"
+# mypass = "root"
+# mydatabase="db"
 
-con = sqlite3.connect(database=mydatabase)
-cur = con.cursor()
+database_connection = sqlite3.connect("LIBRARY.db")
+database_cursor = database_connection.cursor()
 
 # Enter Table Names here
-issueTable = "books_issued" 
-bookTable = "books" #Book Table
+# issueTable = "books_issued" 
+bookTable = "BOOKS" #Book Table
 
 
 def deleteBook():
     
     bid = bookInfo1.get()
+
+    # database_connection = sqlite3.connect("LIBRARY.db")
+    # database_cursor = database_connection.cursor()
     
-    deleteSql = "delete from "+bookTable+" where bid = '"+bid+"'"
-    deleteIssue = "delete from "+issueTable+" where bid = '"+bid+"'"
+    deleteSql = "DELETE from BOOKS where BOOK_ID ="+bid+";"
+    # deleteIssue = "delete from "+issueTable+" where bid = '"+bid+"'"
     try:
-        cur.execute(deleteSql)
-        con.commit()
-        cur.execute(deleteIssue)
-        con.commit()
+        print(deleteSql)
+        database_cursor.execute(deleteSql)
+        database_cursor.commit()
+        # cur.execute(deleteIssue)
+        # con.commit()
+        database_connection.close()
         messagebox.showinfo('Success',"Book Record Deleted Successfully")
     except:
         messagebox.showinfo("Please check Book ID")
@@ -38,7 +43,7 @@ def deleteBook():
     
 def delete(): 
     
-    global bookInfo1,bookInfo2,bookInfo3,bookInfo4,Canvas1,con,cur,bookTable,root
+    global bookInfo1,bookInfo2,bookInfo3,bookInfo5,bookInfo6,bookInfo7,Canvas1,con,cur,bookTable,root
     
     root = Tk()
     root.title("Library")
