@@ -18,7 +18,7 @@ def bookRegister():
     database_cursor = database_connection.cursor()
 
 
-    insertBooks = "insert into "+bookTable+" values('"+bid+"','"+title+"','"+btype+"','"+price+"','"+bcount+"','"+author+"')"
+    insertBooks = "insert into "+bookTable+" values('"+bid+"','"+title+"','"+btype+"','"+price+"','"+bcount+"','"+author+"');"
     try:
         database_cursor.execute(insertBooks)
         database_cursor.commit()
@@ -27,6 +27,7 @@ def bookRegister():
     except:
         messagebox.showinfo("Error","Can't add data into Database")
     
+    print(insertBooks)
     print(bid)
     print(title)
     print(author)
