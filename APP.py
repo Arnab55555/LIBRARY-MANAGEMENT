@@ -51,11 +51,11 @@ def signin():
         database_connection.commit()
         database_connection.close()
 
-img = ImageTk.PhotoImage(Image.open("pl.jpg"))
-Label(root,image=img,border=0,bg='white').place(x=0,y=0)
+img = ImageTk.PhotoImage(Image.open("IMAGES/signup.jpg"))
+Label(root,image=img,border=0,bg='white').place(x=-90,y=-80)
 
 frame=Frame(root,width=350,height=350,bg="white")
-frame.place(x=480,y=70)
+frame.place(x=520,y=70)
 
 heading=Label(frame,text='sign in',fg='#57a1f8',bg='white',font=('Microsoft YaHei UI Light',23,'bold'))
 heading.place(x=100,y=5)
