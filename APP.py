@@ -4,6 +4,7 @@ import PIL
 from PIL import ImageTk, Image
 import ast
 import sqlite3
+from main import *
 
 # img = ImageTk.PhotoImage(Image.open("IMAGES/signup.jpg"))
 # Label(root,image=img,border=0,bg='white').place(x=-90,y=-80)
@@ -33,13 +34,14 @@ def app():
 
 
         if result:
-           screen=Toplevel(root)
-           screen.title("App")
-           screen.geometry('925x500+300+200')
-           screen.config(bg="white")
-           print("You have successfully logged in")
-           Label(screen,text='Hello Everyone!',bg='#fff',font=('calibri(Body)',50,'bold')).pack(expand=True)
-           screen.mainloop()
+            return amain()
+        #    screen=Toplevel(root)
+        #    screen.title("App")
+        #    screen.geometry('925x500+300+200')
+        #    screen.config(bg="white")
+        #    print("You have successfully logged in")
+        #    Label(screen,text='Hello Everyone!',bg='#fff',font=('calibri(Body)',50,'bold')).pack(expand=True)
+        #    screen.mainloop()
 
         #elif Username!='admin' and password!='1234':
            # messagebox.showerror("Invalid","Invalid username and password")
