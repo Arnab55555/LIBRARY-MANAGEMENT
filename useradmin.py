@@ -46,4 +46,3 @@ sign_up= Button(frame,width=6,text='sign up',border=0,bg='white',cursor='hand2',
 sign_up.place(x=150,y=220)
 
 root.mainloop()
-root.destroy()

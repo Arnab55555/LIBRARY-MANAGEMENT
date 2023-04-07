@@ -8,6 +8,8 @@ import sqlite3
 
 def signUp():
 
+    # App.root.destroy()
+
     base = Tk()  
 
     # Open window having dimension 100x100

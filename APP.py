@@ -34,7 +34,9 @@ def app():
 
 
         if result:
+            root.destroy()
             return amain()
+            
         #    screen=Toplevel(root)
         #    screen.title("App")
         #    screen.geometry('925x500+300+200')
@@ -53,6 +55,8 @@ def app():
             messagebox.showerror("Invalid","Please input correct username or password...!")
             database_connection.commit()
             database_connection.close()
+        
+        
 
     #  img = ImageTk.PhotoImage(Image.open("IMAGES/signup.jpg"))
     #  Label(root,image=img,border=0,bg='white').place(x=-90,y=-80)
@@ -90,7 +94,7 @@ def app():
         name=user.get()
         if name=='':
             code.insert(0,'password')
-    code= Entry(frame,width=35,fg='black',border=2,bg="white",font=('Microsoft YaHei UI Light',11,))
+    code= Entry(frame,width=35,fg='black',border=2,bg="white",font=('Microsoft YaHei UI Light',11,),show='*')
     code.place(x=30,y=150)
     code.insert(0,'password')
     code.bind('<FocusIn>', on_enter)
