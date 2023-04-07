@@ -6,6 +6,8 @@ import PIL
 from PIL import ImageTk, Image
 import ast
 import sqlite3
+from APP import *
+
 # create a tkinter window
 root = Tk()			
 
@@ -30,7 +32,7 @@ background_label.place(x=0, y=-30, relwidth=1.2, relheight=1.2)
 frame=Frame(root,width=250,height=250,bg="white")
 frame.place(x=30,y=120)
 
-sign_up= Button(width=20,text='USER',border=0,bg='navy blue',cursor='hand2',fg='white',bd = '25')
+sign_up= Button(width=20,text='USER',border=0,bg='navy blue',cursor='hand2',fg='white',bd = '25',command=app)
 sign_up.place(x=50,y=160)
 
 sign_up= Button(width=20,text='ADMIN',border=0,bg='navy blue',cursor='hand2',fg='white',bd = '25')
@@ -44,3 +46,4 @@ sign_up= Button(frame,width=6,text='sign up',border=0,bg='white',cursor='hand2',
 sign_up.place(x=150,y=220)
 
 root.mainloop()
+root.destroy()
