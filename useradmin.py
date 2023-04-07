@@ -32,10 +32,10 @@ background_label.place(x=0, y=-30, relwidth=1.2, relheight=1.2)
 frame=Frame(root,width=250,height=250,bg="white")
 frame.place(x=30,y=120)
 
-sign_up= Button(width=20,text='USER',border=0,bg='navy blue',cursor='hand2',fg='white',bd = '25',command=app)
+sign_up= Button(width=20,text='ADMIN',border=0,bg='navy blue',cursor='hand2',fg='white',bd = '25',command=app)
 sign_up.place(x=50,y=160)
 
-sign_up= Button(width=20,text='ADMIN',border=0,bg='navy blue',cursor='hand2',fg='white',bd = '25')
+sign_up= Button(width=20,text='user',border=0,bg='navy blue',cursor='hand2',fg='white',bd = '25')
 sign_up.place(x=50,y=250)
 
 

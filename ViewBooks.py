@@ -35,24 +35,27 @@ def View():
     headingLabel.place(relx=0,rely=0, relwidth=1, relheight=1)
     
     #tree defining
-    tree = ttk.Treeview(root)
+    tree = ttk.Treeview(Canvas1)
     tree['show']="headings"
+
+    s = ttk.Style(Canvas1)
+    s.theme_use("clam")
 
 
     tree['columns']=("BOOK_ID","BOOK_NAME","BOOK_TYPE","BOOK_PRICE","BOOK_COUNT","BOOK_AUTHOR")
     tree.column("BOOK_ID",width=50,minwidth=50,anchor=tkinter.CENTER)
     tree.column("BOOK_NAME",width=100,minwidth=100,anchor=tkinter.CENTER)
     tree.column("BOOK_TYPE",width=50,minwidth=50,anchor=tkinter.CENTER)
-    tree.column("BOOK_PRICE",width=150,minwidth=150,anchor=tkinter.CENTER)
-    tree.column("BOOK_COUNT",width=150,minwidth=150,anchor=tkinter.CENTER)
-    tree.column("BOOK_AUTHOR",width=150,minwidth=150,anchor=tkinter.CENTER)
+    tree.column("BOOK_PRICE",width=50,minwidth=50,anchor=tkinter.CENTER)
+    tree.column("BOOK_COUNT",width=50,minwidth=50,anchor=tkinter.CENTER)
+    tree.column("BOOK_AUTHOR",width=100,minwidth=100,anchor=tkinter.CENTER)
 
-    tree.heading("BOOK_ID",    text="BOOK_ID",anchor=tkinter.CENTER)
-    tree.heading("BOOK_NAME",  text="BOOK_NAME",anchor=tkinter.CENTER)
-    tree.heading("BOOK_TYPE",  text="BOOK_TYPE",anchor=tkinter.CENTER)
-    tree.heading("BOOK_PRICE", text="BOOK_PRICE",anchor=tkinter.CENTER)
-    tree.heading("BOOK_COUNT", text="BOOK_COUNT",anchor=tkinter.CENTER)
-    tree.heading("BOOK_AUTHOR",text="BOOK_AUTHOR",anchor=tkinter.CENTER)
+    tree.heading("BOOK_ID",    text="ID",anchor=tkinter.CENTER)
+    tree.heading("BOOK_NAME",  text="NAME",anchor=tkinter.CENTER)
+    tree.heading("BOOK_TYPE",  text="TYPE",anchor=tkinter.CENTER)
+    tree.heading("BOOK_PRICE", text="PRICE",anchor=tkinter.CENTER)
+    tree.heading("BOOK_COUNT", text="COUNT",anchor=tkinter.CENTER)
+    tree.heading("BOOK_AUTHOR",text="AUTHOR",anchor=tkinter.CENTER)
 
 
 
@@ -72,7 +75,24 @@ def View():
             # y += 0.1
             tree.insert('',i, text="",values=(ro[0],ro[1],ro[2],ro[3],ro[4],ro[5]))
             i = i+1
-        tree.pack()
+        # tree.place(relx=0.1,rely=0.3, relwidth=0.8, relheight=0.5)
+
+        # hsb = ttk.Scrollbar(root,orient="horizontal")
+
+        # hsb.configure(command=tree.xview)
+        # tree.configure(xscrollcommand=hsb.set)
+        # hsb.place(relx=0.1,rely=0.8,fill=X,side = BOTTOM)
+
+        # hsb = ttk.Scrollbar(root,orient="vertical")
+
+        # hsb.configure(command=tree.xview)
+        # tree.configure(yscrollcommand=hsb.set)
+        # hsb.place(relx=0.1,rely=0.8,fill=Y,side = RIGHT)
+
+
+        tree.place(relx=0.1,rely=0.3, relwidth=0.8, relheight=0.5)
+
+
     except:
         messagebox.showinfo("Failed to fetch files from database")
     
