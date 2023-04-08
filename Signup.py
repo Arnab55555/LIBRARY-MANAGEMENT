@@ -12,8 +12,10 @@ def signUp():
 
     base = Tk()  
 
+
     # Open window having dimension 100x100
     base.geometry('800x500+10+20')
+<<<<<<< Updated upstream
     base.title("SIGNUP form")  
     Canvas1 = Canvas(base)
         
@@ -23,6 +25,15 @@ def signUp():
     headingFrame1 = Frame(base,bg="white",bd=5)
     headingFrame1.place(relx=0.25,rely=0.1,relwidth=0.5,relheight=0.13)
         
+=======
+    base.title("SIGNUP form")
+
+    # canvas = Canvas(base,width=400,heigh=400,bg="black")
+    # img = PhotoImage(file="pict.jpg")
+    # canvas.create_image(0,0,anchor=NW,image=img)
+    # canvas.pack(pady=20)  
+
+>>>>>>> Stashed changes
     labl_0 = Label(base, text="SIGN UP",width=20,font=("bold", 20))  
     labl_0.place(x=230,y=60)  
     

@@ -40,6 +40,10 @@ def amain():
     # img = ImageTk.PhotoImage(background_image)
 
     # Canvas1 = Canvas(root)
+    # canvas=Canvas(root,width=400,height=400,bg='white')
+    # img = PhotoImage(file="pict.jpg")
+    # canvas.create_image(0,0,anchor=NW,image=img)
+    # canvas.pack(pady=20)
 
     # # Canvas1.create_image(280,300,image = img)      
     # Canvas1.config(bg="white",width = newImageSizeWidth, height = newImageSizeHeight)
