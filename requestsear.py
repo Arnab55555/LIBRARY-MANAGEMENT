@@ -1,3 +1,5 @@
+import tkinter
+from tkinter import ttk
 from tkinter import * 
 import sqlite3
 from tkinter import messagebox  
@@ -16,22 +18,16 @@ def searh():
 
         print(searchBooks)
 
-        labelFrame = Frame(base,bg='black')
-        labelFrame.place(relx=0.1,rely=0.3,relheight=0.5,relwidth=0.8)
-        y = 0.25
 
-        Label(labelFrame, text="-------------------------------------------------------------------------------------",bg='black',fg='white').place(relx=0.05,rely=0.2)
         try:
               
                 database_cursor.execute(searchBooks)
-                # database_connection.commit()
-                for i in database_cursor:
-                        print(i)
-                        
-                        Label(labelFrame, text="%-10s%-40s%-10s%-10s%-10s%-20s"%(i[0],i[1],i[2],i[3],i[4],i[5]),bg='black',fg='white').place(relx=0.07,rely=y)
-                        y += 0.1
                 database_connection.commit()
-                database_connection.close()
+                i = 0
+                for ro in database_cursor:
+                        tree.insert('',i, text="",values=(ro[0],ro[1],ro[2],ro[3],ro[4],ro[5]))
+                        i = i+1
+                # database_connection.close()
                 messagebox.showinfo('Success',"Book found successfully")
 
         except:
@@ -44,7 +40,7 @@ def searh():
 
 def requestEar():
 
-        global en1,en3,bookTable,base
+        global en1,en3,bookTable,base,tree
 
        
 
@@ -65,6 +61,30 @@ def requestEar():
         en3= Entry(base)  
         en3.place(x=270, y=160)  
         
+        tree = ttk.Treeview(base)
+        tree['show']="headings"
+
+        s = ttk.Style(base)
+        s.theme_use("clam")
+
+
+        tree['columns']=("BOOK_ID","BOOK_NAME","BOOK_TYPE","BOOK_PRICE","BOOK_COUNT","BOOK_AUTHOR")
+        tree.column("BOOK_ID",width=50,minwidth=50,anchor=tkinter.CENTER)
+        tree.column("BOOK_NAME",width=100,minwidth=100,anchor=tkinter.CENTER)
+        tree.column("BOOK_TYPE",width=50,minwidth=50,anchor=tkinter.CENTER)
+        tree.column("BOOK_PRICE",width=50,minwidth=50,anchor=tkinter.CENTER)
+        tree.column("BOOK_COUNT",width=50,minwidth=50,anchor=tkinter.CENTER)
+        tree.column("BOOK_AUTHOR",width=100,minwidth=100,anchor=tkinter.CENTER)
+
+        tree.heading("BOOK_ID",    text="ID",anchor=tkinter.CENTER)
+        tree.heading("BOOK_NAME",  text="NAME",anchor=tkinter.CENTER)
+        tree.heading("BOOK_TYPE",  text="TYPE",anchor=tkinter.CENTER)
+        tree.heading("BOOK_PRICE", text="PRICE",anchor=tkinter.CENTER)
+        tree.heading("BOOK_COUNT", text="COUNT",anchor=tkinter.CENTER)
+        tree.heading("BOOK_AUTHOR",text="AUTHOR",anchor=tkinter.CENTER)
+
+        tree.place(relx=0.1,rely=0.4, relwidth=0.8, relheight=0.3)
+
         
         
         Button(base, text="SEARCH",command = searh, width=10).place(x=100,y=400)  
