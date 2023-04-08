@@ -28,7 +28,7 @@ def app():
         print(Password)
         database_connection=sqlite3.connect("LIBRARY.db")
         database_cursor = database_connection.cursor()
-        database_cursor.execute("select * from USER where USER_NAME=? and PASSWORD=? ",(Username,Password))
+        database_cursor.execute("select * from ADMIN where ADMIN_NAME=? and PASSWORD=? ",(Username,Password))
         result=database_cursor.fetchone()
 
 
