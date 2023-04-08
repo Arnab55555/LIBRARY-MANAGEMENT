@@ -6,7 +6,7 @@ import PIL
 from PIL import ImageTk, Image
 import ast
 import sqlite3
-from userSignUp import *
+from userSignIn import *
 from APP import *
 
 # create a tkinter window
@@ -36,7 +36,7 @@ frame.place(x=30,y=120)
 sign_up= Button(width=20,text='ADMIN',border=0,bg='navy blue',cursor='hand2',fg='white',bd = '25',command=app)
 sign_up.place(x=50,y=160)
 
-sign_up= Button(width=20,text='USER',border=0,bg='navy blue',cursor='hand2',fg='white',bd = '25',command=Usersignup)
+sign_up= Button(width=20,text='USER',border=0,bg='navy blue',cursor='hand2',fg='white',bd = '25',command=Usersignin)
 sign_up.place(x=50,y=250)
 
 

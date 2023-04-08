@@ -9,7 +9,7 @@ from userMain import *
 # img = ImageTk.PhotoImage(Image.open("IMAGES/signup.jpg"))
 # Label(root,image=img,border=0,bg='white').place(x=-90,y=-80)
 
-def Usersignup():
+def Usersignin():
     root=Tk()
     root.title("signup")
     root.geometry('925x500+300+200')
