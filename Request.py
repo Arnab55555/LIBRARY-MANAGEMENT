@@ -1,24 +1,9 @@
 from tkinter import * 
 import sqlite3
-from tkinter import ttk
 from tkinter import messagebox  
 
-database_connection = sqlite3.connect("LIBRARY.db")
-database_cursor = database_connection.cursor()
 
-bookTable = "BOOKS" 
-
-def searh(): 
-
-         Canvas1 = Canvas(root) 
-         Canvas1.config(bg="#12a4d9")
-         Canvas1.pack(expand=True,fill=BOTH)
-
-        tree = ttk.Treeview(Canvas1)
-        tree['show']="headings"
-
-        s = ttk.Style(Canvas1)
-        s.theme_use("clam")
+def requesting(): 
 
         title = en1.get()
         bid = en3.get()
@@ -26,30 +11,27 @@ def searh():
         database_connection = sqlite3.connect("LIBRARY.db")
         database_cursor = database_connection.cursor()
 
-        
+        searchBooks = "SELECT * from '"+bookTable+"' where BOOK_NAME == '"+title+"' or BOOK_ID = '"+bid+"';"
 
-       
+        print(searchBooks)
 
         labelFrame = Frame(base,bg='black')
         labelFrame.place(relx=0.1,rely=0.3,relheight=0.5,relwidth=0.8)
         y = 0.25
 
         Label(labelFrame, text="-------------------------------------------------------------------------------------",bg='black',fg='white').place(relx=0.05,rely=0.2)
-        searchBooks = "SELECT * from '"+bookTable+"' where BOOK_NAME == '"+title+"' or BOOK_ID = '"+bid+"';"
         try:
-                
-                database_connection.commit()
-                database_connection.close()
-              
+                print("Hello")
                 database_cursor.execute(searchBooks)
                 # database_connection.commit()
-                for ro in database_cursor:
-                       
-                        
-                 tree.insert('',i, text="",values=(ro[0],ro[1],ro[2],ro[3],ro[4],ro[5]))
-                 i = i+1
-               
-                messagebox.showinfo('Success',"Book found successfully")
+                for i in database_cursor:
+                        print(i)
+                        print("hello")
+                        Label(labelFrame, text="%-10s%-40s%-10s%-10s%-10s%-20s"%(i[0],i[1],i[2],i[3],i[4],i[5]),bg='black',fg='white').place(relx=0.07,rely=y)
+                        y += 0.1
+                database_connection.commit()
+                database_connection.close()
+                messagebox.showinfo('Success',"SHOWING AVAILABLE BOOKS")
 
         except:
                 # label35=Label(base,text = "No such book are available")
@@ -59,7 +41,7 @@ def searh():
         print(title)
         print(bid)
 
-def requestEar():
+def Request():
 
         global en1,en3,bookTable,base
 
@@ -84,6 +66,7 @@ def requestEar():
         
         
         
-        Button(base, text="SEARCH",command = searh, width=10).place(x=100,y=400)  
-        Button(base, text="REQUEST", width=10).place(x=270,y=400)  
+      
+        Button(base, text="REQUEST BOOK",command = requesting, width=10).place(x=100,y=400)  
+
         base.mainloop()  
