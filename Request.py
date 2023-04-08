@@ -6,12 +6,12 @@ from tkinter import messagebox
 def requesting(): 
 
         title = en1.get()
-        bid = en3.get()
+        author = en3.get()
 
         database_connection = sqlite3.connect("LIBRARY.db")
         database_cursor = database_connection.cursor()
 
-        searchBooks = "SELECT * from '"+bookTable+"' where BOOK_NAME == '"+title+"' or BOOK_ID = '"+bid+"';"
+        searchBooks = "insert into "+bookTable+" values('"+title+"','"+author+"');"
 
         print(searchBooks)
 
@@ -31,12 +31,12 @@ def requesting():
                         y += 0.1
                 database_connection.commit()
                 database_connection.close()
-                messagebox.showinfo('Success',"SHOWING AVAILABLE BOOKS")
+                messagebox.showinfo('Success',"Request of the book had been added successfully")
 
         except:
                 # label35=Label(base,text = "No such book are available")
                 # label35.place(x=270, y=200)
-                messagebox.showinfo("Failed to fetch files from database")
+                messagebox.showinfo("Sorry","Failed to make the request")
 
         print(title)
         print(bid)
@@ -48,25 +48,25 @@ def Request():
        
 
         base = Tk()  
-        base.geometry("600x500")  
-        base.title("searching book")  
+        base.geometry('800x500+10+20')  
+        base.title("Requesting Book")  
 
-        bookTable = "BOOKS" 
+        bookTable = "REQUESTED_BOOK" 
 
 
         lb1= Label(base, text="BOOK Name", width=20, font=("arial",12))  
-        lb1.place(x=50, y=120)  
+        lb1.place(x=150, y=120)  
         en1= Entry(base)  
-        en1.place(x=270, y=120)  
+        en1.place(x=500, y=120)  
         
         lb3= Label(base, text="Enter BOOK-ID", width=20, font=("arial",12))  
-        lb3.place(x=50, y=160)  
+        lb3.place(x=150, y=190)  
         en3= Entry(base)  
-        en3.place(x=270, y=160)  
+        en3.place(x=500, y=190)  
         
         
         
       
-        Button(base, text="REQUEST BOOK",command = requesting, width=10).place(x=100,y=400)  
+        Button(base, text="REQUEST BOOK",command = requesting,width=15).place(x=330,y=300)  
 
         base.mainloop()  
