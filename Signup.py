@@ -37,6 +37,7 @@ def signUp():
     en3.place(x=380, y=160)  
     
     
+<<<<<<< Updated upstream
     # lb5= Label(base, text="Select Gender", width=15, font=("arial",12))  
     # lb5.place(x=180, y=240)  
     # vars = IntVar()  
@@ -52,6 +53,17 @@ def signUp():
     lb2= Label(base, text="SELECT", width=13,font=("arial",12))  
     lb2.place(x=200,y=240)  
     drplist.place(x=380, y=240)  
+=======
+    
+    lb5= Label(base, text="REGISTER AS ", width=15, font=("arial",12))  
+    lb5.place(x=180, y=240)  
+    vars = IntVar()  
+    Radiobutton(base, text="USER", padx=5,variable=vars, value=1).place(x=380, y=240)  
+    Radiobutton(base, text="ADMIN", padx =10,variable=vars, value=2).place(x=440,y=240)  
+    
+
+    
+>>>>>>> Stashed changes
     
     lb6= Label(base, text="Enter Password", width=13,font=("arial",12))  
     lb6.place(x=200, y=280)  
