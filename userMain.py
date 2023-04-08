@@ -3,6 +3,11 @@ from tkinter import *
 from requestsear import *
 from Request import *
 
+def u_main():
+    root = Tk()
+    root.title("test")
+    root.minsize(width=400,height=400)
+    root.geometry("600x600")
 
 root = Tk()
 root.title("test")
