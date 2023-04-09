@@ -15,20 +15,20 @@ def requesting():
 
         print(searchBooks)
 
-        labelFrame = Frame(base,bg='black')
-        labelFrame.place(relx=0.1,rely=0.3,relheight=0.5,relwidth=0.8)
-        y = 0.25
+        # labelFrame = Frame(base,bg='black')
+        # labelFrame.place(relx=0.1,rely=0.3,relheight=0.5,relwidth=0.8)
+        # y = 0.25
 
-        Label(labelFrame, text="-------------------------------------------------------------------------------------",bg='black',fg='white').place(relx=0.05,rely=0.2)
+        # Label(labelFrame, text="-------------------------------------------------------------------------------------",bg='black',fg='white').place(relx=0.05,rely=0.2)
         try:
                 print("Hello")
                 database_cursor.execute(searchBooks)
                 # database_connection.commit()
-                for i in database_cursor:
-                        print(i)
-                        print("hello")
-                        Label(labelFrame, text="%-10s%-40s%-10s%-10s%-10s%-20s"%(i[0],i[1],i[2],i[3],i[4],i[5]),bg='black',fg='white').place(relx=0.07,rely=y)
-                        y += 0.1
+                # for i in database_cursor:
+                #         print(i)
+                #         print("hello")
+                #         Label(labelFrame, text="%-10s%-40s%-10s%-10s%-10s%-20s"%(i[0],i[1],i[2],i[3],i[4],i[5]),bg='black',fg='white').place(relx=0.07,rely=y)
+                #         y += 0.1
                 database_connection.commit()
                 database_connection.close()
                 messagebox.showinfo('Success',"Request of the book had been added successfully")

@@ -89,5 +89,5 @@ def requestEar():
         
         
         Button(base, text="SEARCH",command = searh, width=10).place(x=100,y=400)  
-        Button(base, text="MAKE REQUEST",command=requesting, width=10).place(x=270,y=400)  
+        Button(base, text="MAKE REQUEST",command=Request, width=10).place(x=270,y=400)  
         base.mainloop() 
