@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import * 
 import sqlite3
 from tkinter import messagebox  
+from Request import *
 
 
 
@@ -33,7 +34,7 @@ def searh():
         except:
                 # label35=Label(base,text = "No such book are available")
                 # label35.place(x=270, y=200)
-                messagebox.showinfo("Failed to fetch files from database")
+                messagebox.showinfo("Sorry","Sorry no such books available in the library")
 
         print(title)
         print(bid)
@@ -88,5 +89,5 @@ def requestEar():
         
         
         Button(base, text="SEARCH",command = searh, width=10).place(x=100,y=400)  
-        Button(base, text="REQUEST", width=10).place(x=270,y=400)  
+        Button(base, text="MAKE REQUEST",command=requesting, width=10).place(x=270,y=400)  
         base.mainloop() 

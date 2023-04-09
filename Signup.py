@@ -29,8 +29,7 @@ def signuping():
             messagebox.showinfo("Success","You have registered successfully")
         except:
             messagebox.showinfo("Error","Sorry you are not able to register")
-            
-    pass
+
 
 
 
