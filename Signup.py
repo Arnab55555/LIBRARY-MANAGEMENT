@@ -1,9 +1,11 @@
+import tkinter
 from tkinter import * 
 import PIL
 from PIL import ImageTk, Image
 import ast
 from tkinter import messagebox 
 import sqlite3
+
 # from APP import * 
 
 database_connection = sqlite3.connect("LIBRARY.db")
@@ -15,22 +17,33 @@ def signuping():
     pas = en6.get()
     repas = en7.get()
     mobile=en8.get()
+    # adm = vars.get()
 
-    insertAdmin = "insert into ADMIN values('" "','"+name+"','"+pas+"','"+mailing+"','"+mobile+"');"
-    insertUser = "insert into USER values('" "','"+name+"','"+pas+"','"+mailing+"','"+mobile+"');"
 
-    if():
-        try:
-            database_cursor.execute()
-            messagebox.showinfo("Success","You have registered successfully")
-        except:
-            messagebox.showinfo("Error","Sorry you are not able to register")
+    insertAdmin = "insert into ADMIN(ADMIN_NAME,PASSWORD,EMAIL,MOBILE_NO) values('"+name+"','"+pas+"','"+mailing+"','"+mobile+"');"
+    insertUser = "insert into USER(USER_NAME,PASSWORD,EMAIL,MOBILE_NO) values('"+name+"','"+pas+"','"+mailing+"','"+mobile+"');"
+
+    if (vars == 2):
+        if (repas == pas):
+            print(insertAdmin)
+            print(vars)
+            try:
+                database_cursor.execute(insertAdmin)
+                messagebox.showinfo("Success","You have registered successfully")
+            except:
+                messagebox.showinfo("Error","Sorry you are not able to register")
+        else:
+            messagebox.showinfo("Error","Enter your both password correctly")
     else:
-        try:
-            database_cursor.execute()
-            messagebox.showinfo("Success","You have registered successfully")
-        except:
-            messagebox.showinfo("Error","Sorry you are not able to register")
+        if (repas == pas):
+            print(insertUser)
+            try:
+                database_cursor.execute(insertUser)
+                messagebox.showinfo("Success","You have registered successfully")
+            except:
+                messagebox.showinfo("Error","Sorry you are not able to register")
+        else:
+            messagebox.showinfo("Error","Enter your both password correctly")
 
 
 
@@ -74,8 +87,8 @@ def signUp():
     
     lb5= Label(base, text="REGISTER AS ", width=15, font=("arial",12))  
     lb5.place(x=180, y=240)  
-    vars = IntVar()  
-    r1=Radiobutton(base, text="USER", padx=5,variable=vars, value=1).place(x=380, y=240)  
+    vars = tkinter.IntVar()  
+    r1=Radiobutton(base, text="USER", padx=5,variable=vars, value=1).place(x=380, y=240)
     r2=Radiobutton(base, text="ADMIN", padx =10,variable=vars, value=2).place(x=440,y=240)  
     
 
@@ -96,5 +109,5 @@ def signUp():
     en8 =Entry(base, show='*')  
     en8.place(x=380, y=360)  
 
-    Button(base, text="Register",commmand=signuping, width=20).place(x=300,y=400)  
+    Button(base, text="Register",command=signuping, width=20).place(x=300,y=400)  
     base.mainloop()  
