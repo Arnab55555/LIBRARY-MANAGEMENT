@@ -65,12 +65,13 @@ def issue():
             print(srt)
             print(no)
 
-            if (no > 0):
+            if (no > -1):
                 print("hello")
                 # print(updatet)
                 database_cursor.execute(srt)
-                database_connection.commit()
-                n = 1
+                # database_connection.commit()
+                n = "ok"
+                print(n)
                 messagebox.showinfo("Success","Book has been issued successfully")
 
             #     updatet = "update "+bookTable+" SET BOOK_COUNT = 9 WHERE BOOK_ID=='"+bid+"';"
@@ -141,12 +142,14 @@ def issue():
     except:
         messagebox.showinfo("Error","Can't fetch Book IDs")
     
-    issueSql = "insert into "+issueTable+" values ('"+bid+"','"+issueto+"')"
+    issueSql = "insert into "+issueTable+" values('"+bid+"','"+issueto+"');"
     # show = "select * from "+issueTable
     
     # updateStatus = "update "+bookTable+" set BOOK_COUNT = 'issued' where bid = '"+bid+"'"
     try:
-        if n == 1:
+        print(issueSql)
+        print(type(n))
+        if n == "ok":
             database_cursor.execute(issueSql)
             database_connection.commit()
             # cur.execute(updateStatus)
