@@ -5,8 +5,42 @@ import ast
 import sqlite3
 # from APP import * 
 
+database_connection = sqlite3.connect("LIBRARY.db")
+database_cursor = database_connection.cursor()
+
+def signuping():
+    name = en1.get()
+    mailing = en3.get()
+    pas = en6.get()
+    repas = en7.get()
+
+    insertAdmin = "insert into ADMIN values('" "','"+name+"','"+pas+"','"+emailing+"','"+mobile+"');"
+    insertUser = "insert into USER values('" "','"+name+"','"+pas+"','"+emailing+"','"+mobile+"');"
+
+    if():
+        try:
+            database_cursor.execute()
+            messagebox.showinfo("Success","You have registered successfully")
+        except:
+            messagebox.showinfo("Error","Sorry you are not able to register")
+    else:
+        try:
+            database_cursor.execute()
+            messagebox.showinfo("Success","You have registered successfully")
+        except:
+            messagebox.showinfo("Error","Sorry you are not able to register")
+            
+    pass
+
+
+
+
+
 
 def signUp():
+
+    global en7,en1,en3,en6
+
 
     # App.root.destroy()
 
@@ -56,5 +90,5 @@ def signUp():
     en7 =Entry(base, show='*')  
     en7.place(x=380, y=320)  
     
-    Button(base, text="Register", width=20).place(x=300,y=400)  
+    Button(base, text="Register",commmand=signuping, width=20).place(x=300,y=400)  
     base.mainloop()  
