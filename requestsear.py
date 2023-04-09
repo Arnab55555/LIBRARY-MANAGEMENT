@@ -48,7 +48,11 @@ def requestEar():
         base = Tk()  
         base.geometry("600x500")  
         base.title("searching book")  
-
+        
+        Canvas1 = Canvas(base)
+                
+        Canvas1.config(bg="#1F456E")
+        Canvas1.pack(expand=True,fill=BOTH)
         bookTable = "BOOKS" 
 
 
