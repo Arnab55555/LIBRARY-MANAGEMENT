@@ -3,71 +3,144 @@ from PIL import ImageTk,Image
 from tkinter import messagebox
 import sqlite3
 # Add your own database name and password here to reflect in the code
-mypass = "root"
-mydatabase="db"
+# mypass = "root"
+# mydatabase="db"
 
-con = sqlite3.connect(database=mydatabase)
-cur = con.cursor()
+database_connection=sqlite3.connect("LIBRARY.db")
+database_cursor = database_connection.cursor()
 
 # Enter Table Names here
-issueTable = "books_issued" 
-bookTable = "books"
+issueTable = "ISSUED_BOOKS" 
+bookTable = "BOOKS"
     
 #List To store all Book IDs
-allBid = [] 
+# allBid = [] 
 
 def issue():
     
-    global issueBtn,labelFrame,lb1,inf1,inf2,quitBtn,root,Canvas1,status
+    global issueBtn,labelFrame,lb1,inf1,inf2,quitBtn,root,Canvas1,status,bid
     
     bid = inf1.get()
     issueto = inf2.get()
 
-    issueBtn.destroy()
-    labelFrame.destroy()
-    lb1.destroy()
-    inf1.destroy()
-    inf2.destroy()
+    # issueBtn.destroy()
+    # labelFrame.destroy()
+    # lb1.destroy()
+    # inf1.destroy()
+    # inf2.destroy()
     
     
-    extractBid = "select bid from "+bookTable
-    try:
-        cur.execute(extractBid)
-        con.commit()
-        for i in cur:
-            allBid.append(i[0])
-        
-        if bid in allBid:
-            checkAvail = "select status from "+bookTable+" where bid = '"+bid+"'"
-            cur.execute(checkAvail)
-            con.commit()
-            for i in cur:
-                check = i[0]
-                
-            if check == 'avail':
-                status = True
-            else:
-                status = False
+    extractBid = "select BOOK_COUNT from "+bookTable+" where BOOK_ID="+bid+";"
+    updatet = "update BOOK SET BOOK_COUNT = 0 WHERE BOOK_ID="+bid+";"
 
-        else:
-            messagebox.showinfo("Error","Book ID not present")
+    # global no
+    # nu = no.get()
+
+    # updatet = "update BOOKS set BOOK_COUNT = "+no+" where BOOK_ID= "+bid+";"
+
+    print(extractBid)
+
+    try:
+        database_cursor.execute(extractBid)
+        # database_connection.commit()
+        for i in database_cursor:
+            global no
+            no = i[0]
+            print (no)
+        
+        if (no > 0):
+            # checkAvail = "select BOOK_COUNT from "+bookTable+" where bid = '"+bid+"'"
+            # database_cursor.execute(extractBid)
+            # database_connection.commit()
+            # for i in database_cursor:
+            #     check = i[0]
+            no = no - 1
+            print(no)
+            # database_connection=sqlite3.connect("LIBRARY.db")
+            # database_cursor = database_connection.cursor()
+            # updt(no)
+            if (no == 9):
+                updatet = "update "+bookTable+" SET BOOK_COUNT = 9 WHERE BOOK_ID=='"+bid+"';"
+                print(updatet)
+                database_cursor.execute(updatet)
+                database_connection.commit()
+                messagebox.showinfo("Success","Book has been issued successfully")
+            elif (no == 8):
+                updatet = "update "+bookTable+" SET BOOK_COUNT = 8 WHERE BOOK_ID=='"+bid+"';"
+                print(updatet)
+                database_cursor.execute(updatet)
+                database_connection.commit()
+                messagebox.showinfo("Success","Book has been issued successfully")
+            elif (no == 7):
+                updatet = "update "+bookTable+" SET BOOK_COUNT = 7 WHERE BOOK_ID=='"+bid+"';"
+                print(updatet)
+                database_cursor.execute(updatet)
+                database_connection.commit()
+                messagebox.showinfo("Success","Book has been issued successfully")
+            elif (no == 6):
+                updatet = "update "+bookTable+" SET BOOK_COUNT = 6 WHERE BOOK_ID=='"+bid+"';"
+                print(updatet)
+                database_cursor.execute(updatet)
+                database_connection.commit()
+                messagebox.showinfo("Success","Book has been issued successfully")
+            elif (no == 5):
+                updatet = "update "+bookTable+" SET BOOK_COUNT = 5 WHERE BOOK_ID=='"+bid+"';"
+                print(updatet)
+                database_cursor.execute(updatet)
+                database_connection.commit()
+                messagebox.showinfo("Success","Book has been issued successfully")
+            elif (no == 4):
+                updatet = "update "+bookTable+" SET BOOK_COUNT = 4 WHERE BOOK_ID=='"+bid+"';"
+                print(updatet)
+                database_cursor.execute(updatet)
+                database_connection.commit()
+                messagebox.showinfo("Success","Book has been issued successfully")
+            elif (no == 3):
+                updatet = "update "+bookTable+" SET BOOK_COUNT = 3 WHERE BOOK_ID=='"+bid+"';"
+                print(updatet)
+                database_cursor.execute(updatet)
+                database_connection.commit()
+                messagebox.showinfo("Success","Book has been issued successfully")
+            elif (no == 2):
+                updatet = "update "+bookTable+" SET BOOK_COUNT = 2 WHERE BOOK_ID=='"+bid+"';"
+                print(updatet)
+                database_cursor.execute(updatet)
+                database_connection.commit()
+                messagebox.showinfo("Success","Book has been issued successfully")
+            elif (no == 1):
+                updatet = "update "+bookTable+" SET BOOK_COUNT = 1 WHERE BOOK_ID=='"+bid+"';"
+                print(updatet)
+                database_cursor.execute(updatet)
+                database_connection.commit()
+                messagebox.showinfo("Success","Book has been issued successfully")
+            elif (no == 0):
+                updatet = "update "+bookTable+" SET BOOK_COUNT = 0 WHERE BOOK_ID=='"+bid+"';"
+                print(updatet)
+                database_cursor.execute(updatet)
+                database_connection.commit()
+                messagebox.showinfo("Success","Book has been issued successfully")
+            # if (check > 0) :
+            #     status = True
+            # else:
+            #     status = False
+            else:
+                messagebox.showinfo("Error","Book is not available")
     except:
         messagebox.showinfo("Error","Can't fetch Book IDs")
     
     issueSql = "insert into "+issueTable+" values ('"+bid+"','"+issueto+"')"
-    show = "select * from "+issueTable
+    # show = "select * from "+issueTable
     
-    updateStatus = "update "+bookTable+" set status = 'issued' where bid = '"+bid+"'"
+    # updateStatus = "update "+bookTable+" set BOOK_COUNT = 'issued' where bid = '"+bid+"'"
     try:
-        if bid in allBid and status == True:
-            cur.execute(issueSql)
-            con.commit()
-            cur.execute(updateStatus)
-            con.commit()
-            messagebox.showinfo('Success',"Book Issued Successfully")
+        if status == True:
+            database_cursor.execute(issueSql)
+            database_connection.commit()
+            # cur.execute(updateStatus)
+            # con.commit()
+            messagebox.showinfo('Success',"Table has been updated Successfully")
             root.destroy()
         else:
-            allBid.clear()
             messagebox.showinfo('Message',"Book Already Issued")
             root.destroy()
             return
@@ -77,7 +150,17 @@ def issue():
     print(bid)
     print(issueto)
     
-    allBid.clear()
+    # allBid.clear()
+
+
+# def updt():
+#     print("hello")
+#     numb = no.get()
+#     updatet = "update BOOKS set BOOK_COUNT = "+numb+" where BOOK_ID= "+bid+";"
+#     print(updatet)
+#     database_cursor.execute(updatet)
+
+
     
 def issueBook(): 
     
