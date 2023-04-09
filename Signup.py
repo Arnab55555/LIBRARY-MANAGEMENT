@@ -29,6 +29,7 @@ def signuping():
             print(vars)
             try:
                 database_cursor.execute(insertAdmin)
+                database_connection.commit()
                 messagebox.showinfo("Success","You have registered successfully")
             except:
                 messagebox.showinfo("Error","Sorry you are not able to register")
