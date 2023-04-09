@@ -2,6 +2,7 @@ from tkinter import *
 import PIL
 from PIL import ImageTk, Image
 import ast
+from tkinter import messagebox 
 import sqlite3
 # from APP import * 
 
@@ -13,9 +14,10 @@ def signuping():
     mailing = en3.get()
     pas = en6.get()
     repas = en7.get()
+    mobile=en8.get()
 
-    insertAdmin = "insert into ADMIN values('" "','"+name+"','"+pas+"','"+emailing+"','"+mobile+"');"
-    insertUser = "insert into USER values('" "','"+name+"','"+pas+"','"+emailing+"','"+mobile+"');"
+    insertAdmin = "insert into ADMIN values('" "','"+name+"','"+pas+"','"+mailing+"','"+mobile+"');"
+    insertUser = "insert into USER values('" "','"+name+"','"+pas+"','"+mailing+"','"+mobile+"');"
 
     if():
         try:
@@ -38,7 +40,7 @@ def signuping():
 
 def signUp():
 
-    global en7,en1,en3,en6
+    global en7,en1,en3,en6,en8
 
 
     # App.root.destroy()
@@ -73,8 +75,8 @@ def signUp():
     lb5= Label(base, text="REGISTER AS ", width=15, font=("arial",12))  
     lb5.place(x=180, y=240)  
     vars = IntVar()  
-    Radiobutton(base, text="USER", padx=5,variable=vars, value=1).place(x=380, y=240)  
-    Radiobutton(base, text="ADMIN", padx =10,variable=vars, value=2).place(x=440,y=240)  
+    r1=Radiobutton(base, text="USER", padx=5,variable=vars, value=1).place(x=380, y=240)  
+    r2=Radiobutton(base, text="ADMIN", padx =10,variable=vars, value=2).place(x=440,y=240)  
     
 
     
@@ -89,5 +91,10 @@ def signUp():
     en7 =Entry(base, show='*')  
     en7.place(x=380, y=320)  
     
+    lb8= Label(base, text="MOBILE NUMBER", width=15,font=("arial",12))  
+    lb8.place(x=200, y=360)  
+    en8 =Entry(base, show='*')  
+    en8.place(x=380, y=360)  
+
     Button(base, text="Register",commmand=signuping, width=20).place(x=300,y=400)  
     base.mainloop()  
