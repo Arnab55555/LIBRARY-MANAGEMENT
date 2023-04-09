@@ -89,8 +89,8 @@ def signUp():
     lb5= Label(base, text="REGISTER AS ", width=15, font=("arial",12))  
     lb5.place(x=180, y=240)  
     vars = tkinter.IntVar()  
-    r1=Radiobutton(base, text="USER", padx=5,variable=vars, value=1).place(x=380, y=240)
-    r2=Radiobutton(base, text="ADMIN", padx =10,variable=vars, value=2).place(x=440,y=240)  
+    r1=Radiobutton(base, text="STUDENT", padx=5,variable=vars, value=1).place(x=380, y=240)
+    r2=Radiobutton(base, text="ADMIN", padx =10,variable=vars, value=2).place(x=470,y=240)  
     
 
     
