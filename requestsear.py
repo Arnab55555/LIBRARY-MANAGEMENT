@@ -48,7 +48,11 @@ def requestEar():
         base = Tk()  
         base.geometry("600x500")  
         base.title("searching book")  
-
+        
+        Canvas1 = Canvas(base)
+                
+        Canvas1.config(bg="#1F456E")
+        Canvas1.pack(expand=True,fill=BOTH)
         bookTable = "BOOKS" 
 
 
@@ -88,6 +92,6 @@ def requestEar():
 
         
         
-        Button(base, text="SEARCH",command = searh, width=10).place(x=100,y=400)  
-        Button(base, text="MAKE REQUEST",command=Request, width=10).place(x=270,y=400)  
+        Button(base, text="SEARCH",command = searh, width=15).place(x=100,y=400)  
+        Button(base, text="MAKE REQUEST",command=Request, width=15).place(x=270,y=400)  
         base.mainloop() 

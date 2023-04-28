@@ -1,6 +1,7 @@
 from tkinter import * 
 import sqlite3
-from tkinter import messagebox  
+from tkinter import messagebox
+from unicodedata import bidirectional  
 
 
 def requesting(): 
@@ -39,7 +40,7 @@ def requesting():
                 messagebox.showinfo("Sorry","Failed to make the request")
 
         print(title)
-        print(bid)
+        print(bidirectional)
 
 def Request():
 
@@ -50,7 +51,11 @@ def Request():
         base = Tk()  
         base.geometry('800x500+10+20')  
         base.title("Requesting Book")  
-
+                
+        Canvas1 = Canvas(base)
+                
+        Canvas1.config(bg="indigo")
+        Canvas1.pack(expand=True,fill=BOTH)
         bookTable = "REQUESTED_BOOK" 
 
 

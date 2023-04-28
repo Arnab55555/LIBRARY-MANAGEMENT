@@ -21,6 +21,10 @@ def amain():
     root.title("Library")
     root.minsize(width=400,height=400)
     root.geometry("600x600")
+    Canvas1 = Canvas(root)
+        
+    Canvas1.config(bg="cider")
+    Canvas1.pack(expand=True,fill=BOTH)
 
     # Take n greater than 0.25 and less than 5
     # same=True
