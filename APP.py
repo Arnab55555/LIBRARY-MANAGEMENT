@@ -16,6 +16,10 @@ def app():
     root.configure(bg='#fff')
     root.resizable(False,False)
 
+    Canvas1 = Canvas(root)
+    Canvas1.config(bg="cornflower blue")
+    Canvas1.pack(expand=True,fill=BOTH)
+
     user=StringVar()
     code=StringVar()
 

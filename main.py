@@ -23,7 +23,7 @@ def amain():
     root.geometry("600x600")
     Canvas1 = Canvas(root)
         
-    Canvas1.config(bg="white")
+    Canvas1.config(bg="orange")
     Canvas1.pack(expand=True,fill=BOTH)
 
     # Take n greater than 0.25 and less than 5

@@ -108,9 +108,9 @@ def signUp():
     en7.place(x=430, y=320)  
     
     lb8= Label(base, text="MOBILE NUMBER", width=15,font=("arial",12))  
-    lb8.place(x=20, y=360)  
+    lb8.place(x=250, y=360)  
     en8 =Entry(base, show='*')  
-    en8.place(x=380, y=360)  
+    en8.place(x=430, y=360)  
 
     Button(base, text="Register",command=signuping, width=20).place(x=350,y=400)  
     base.mainloop()  
