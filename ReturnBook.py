@@ -44,7 +44,7 @@ def returnn():
             # for i in cur:
             #     check = i[0]
 
-            no = no - 1
+            no = no + 1
             print(no)
             num = str(no)
             print(num)
