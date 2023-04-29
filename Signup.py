@@ -20,31 +20,36 @@ def signuping():
     # adm = vars.get()
 
 
-    insertAdmin = "insert into ADMIN(ADMIN_NAME,PASSWORD,EMAIL,MOBILE_NO) values('"+name+"','"+pas+"','"+mailing+"','"+mobile+"');"
+    # insertAdmin = "insert into ADMIN(ADMIN_NAME,PASSWORD,EMAIL,MOBILE_NO) values('"+name+"','"+pas+"','"+mailing+"','"+mobile+"');"
     insertUser = "insert into USER(USER_NAME,PASSWORD,EMAIL,MOBILE_NO) values('"+name+"','"+pas+"','"+mailing+"','"+mobile+"');"
 
-    if (vars == 2):
-        if (repas == pas):
-            print(insertAdmin)
-            print(vars)
-            try:
-                database_cursor.execute(insertAdmin)
-                database_connection.commit()
-                messagebox.showinfo("Success","You have registered successfully")
-            except:
-                messagebox.showinfo("Error","Sorry you are not able to register")
-        else:
-            messagebox.showinfo("Error","Enter your both password correctly")
+    # if (vars == 2):
+        # if (repas == pas):
+        #     print(insertAdmin)
+        #     print(vars)
+        #     try:
+        #         database_cursor.execute(insertAdmin)
+        #         database_connection.commit()
+        #         messagebox.showinfo("Success","You have registered successfully")
+        #     except:
+        #         messagebox.showinfo("Error","Sorry you are not able to register")
+        # else:
+        #     messagebox.showinfo("Error","Enter your both password correctly")
+    # else:
+    if (repas == pas):
+        print(insertUser)
+        try:
+            database_cursor.execute(insertUser)
+            database_connection.commit()
+            messagebox.showinfo("Success","You have registered successfully")
+            base.destroy()
+            
+        except:
+            messagebox.showinfo("Error","Sorry you are not able to register")
     else:
-        if (repas == pas):
-            print(insertUser)
-            try:
-                database_cursor.execute(insertUser)
-                messagebox.showinfo("Success","You have registered successfully")
-            except:
-                messagebox.showinfo("Error","Sorry you are not able to register")
-        else:
-            messagebox.showinfo("Error","Enter your both password correctly")
+        messagebox.showinfo("Error","Enter your both password correctly")
+        base.destroy()
+        
 
 
 
@@ -54,7 +59,7 @@ def signuping():
 
 def signUp():
 
-    global en7,en1,en3,en6,en8
+    global en7,en1,en3,en6,en8,base
 
 
     # App.root.destroy()
@@ -88,29 +93,29 @@ def signUp():
     
     
     
-    lb5= Label(base, text="REGISTER AS ", width=15, font=("arial",12))  
-    lb5.place(x=250, y=240)  
-    vars = tkinter.IntVar()  
-    r1=Radiobutton(base, text="STUDENT", padx=5,variable=vars, value=1).place(x=430, y=240)
-    r2=Radiobutton(base, text="ADMIN", padx =10,variable=vars, value=2).place(x=520,y=240)  
+    # lb5= Label(base, text="REGISTER AS ", width=15, font=("arial",12))  
+    # lb5.place(x=250, y=240)  
+    # vars = tkinter.IntVar()  
+    # r1=Radiobutton(base, text="STUDENT", padx=5,variable=vars, value=1).place(x=430, y=240)
+    # r2=Radiobutton(base, text="ADMIN", padx =10,variable=vars, value=2).place(x=520,y=240)  
     
 
     
     
     lb6= Label(base, text="Enter Password", width=13,font=("arial",12))  
-    lb6.place(x=250, y=280)  
+    lb6.place(x=250, y=200)  
     en6= Entry(base, show='*')  
-    en6.place(x=430, y=280)  
+    en6.place(x=430, y=200)  
     
     lb7= Label(base, text="Re-Enter Password", width=15,font=("arial",12))  
-    lb7.place(x=250, y=320)  
+    lb7.place(x=250, y=240)  
     en7 =Entry(base, show='*')  
-    en7.place(x=430, y=320)  
+    en7.place(x=430, y=240)  
     
     lb8= Label(base, text="MOBILE NUMBER", width=15,font=("arial",12))  
-    lb8.place(x=250, y=360)  
+    lb8.place(x=250, y=280)  
     en8 =Entry(base, show='*')  
-    en8.place(x=430, y=360)  
+    en8.place(x=430, y=280)  
 
-    Button(base, text="Register",command=signuping, width=20).place(x=350,y=400)  
+    Button(base, text="Register",command=signuping, width=20).place(x=330,y=350)  
     base.mainloop()  
