@@ -4,64 +4,85 @@ from tkinter import messagebox
 import sqlite3
 
 # Add your own database name and password here to reflect in the code
-mypass = "root"
-mydatabase="db"
+# mypass = "root"
+# mydatabase="db"
 
-con = sqlite3.connect(database=mydatabase)
-cur = con.cursor()
+database_connection=sqlite3.connect("LIBRARY.db")
+database_cursor = database_connection.cursor()
 
 # Enter Table Names here
-issueTable = "books_issued" #Issue Table
-bookTable = "books" #Book Table
+issueTable = "ISSUED_BOOKS" #Issue Table
+bookTable = "BOOKS" #Book Table
 
 
-allBid = [] #List To store all Book IDs
+# allBid = [] #List To store all Book IDs
 
 def returnn():
     
-    global SubmitBtn,labelFrame,lb1,bookInfo1,quitBtn,root,Canvas1,status
+    global SubmitBtn,labelFrame,lb1,bookInfo1,inf2,quitBtn,root,Canvas1,status,bid,num,n
     
     bid = bookInfo1.get()
+    issueto = inf2.get()
 
-    extractBid = "select bid from "+issueTable
+    extractBid = "select BOOK_COUNT from "+bookTable+" where BOOK_ID="+bid+";"
+
+    print(extractBid)
     try:
-        cur.execute(extractBid)
-        con.commit()
-        for i in cur:
-            allBid.append(i[0])
-        
-        if bid in allBid:
-            checkAvail = "select status from "+bookTable+" where bid = '"+bid+"'"
-            cur.execute(checkAvail)
-            con.commit()
-            for i in cur:
-                check = i[0]
-                
-            if check == 'issued':
-                status = True
-            else:
-                status = False
+        database_cursor.execute(extractBid)
+        # con.commit()
+        for i in database_cursor:
+            global no
+            no = i[0]
+            print (no)
 
-        else:
-            messagebox.showinfo("Error","Book ID not present")
+
+        
+        if (no >= 0):
+            # checkAvail = "select status from "+bookTable+" where bid = '"+bid+"'"
+            # cur.execute(checkAvail)
+            # con.commit()
+            # for i in cur:
+            #     check = i[0]
+
+            no = no - 1
+            print(no)
+            num = str(no)
+            print(num)
+
+            srt = "update "+bookTable+" SET BOOK_COUNT ='" +num+"' WHERE BOOK_ID=='"+bid+"';"
+            print(srt)
+            print(no)
+                
+            if (no > -1):
+                print("hello")
+                database_cursor.execute(srt)
+                n = "ok"
+                print(n)
+                messagebox.showinfo("Success","Book has been returned successfully")
+            else:
+                messagebox.showinfo("Error","Book is not available")
+
     except:
         messagebox.showinfo("Error","Can't fetch Book IDs")
     
     
-    issueSql = "delete from "+issueTable+" where bid = '"+bid+"'"
+    issueSql = "delete from "+issueTable+" where BOOK_ID = '"+bid+"'and USER_ID = '"+issueto+"';"
   
-    print(bid in allBid)
-    print(status)
-    updateStatus = "update "+bookTable+" set status = 'avail' where bid = '"+bid+"'"
+    # print(bid in allBid)
+    # print(status)
+    # updateStatus = "update "+bookTable+" set status = 'avail' where bid = '"+bid+"'"
     try:
-        if bid in allBid and status == True:
-            cur.execute(issueSql)
-            con.commit()
-            cur.execute(updateStatus)
-            con.commit()
+        print(issueSql)
+        print(type(n))
+        if n == "ok":
+            database_cursor.execute(issueSql)
+            database_connection.commit()
+            # cur.execute(updateStatus)
+            # con.commit()
             messagebox.showinfo('Success',"Book Returned Successfully")
+            root.destroy()
         else:
-            allBid.clear()
+            # allBid.clear()
             messagebox.showinfo('Message',"Please check the book ID")
             root.destroy()
             return
@@ -69,12 +90,14 @@ def returnn():
         messagebox.showinfo("Search Error","The value entered is wrong, Try again")
     
     
-    allBid.clear()
-    root.destroy()
+    # allBid.clear()
+    print(bid)
+    print(issueto)
+    # root.destroy()
     
 def returnBook(): 
     
-    global bookInfo1,SubmitBtn,quitBtn,Canvas1,con,cur,root,labelFrame, lb1
+    global bookInfo1,inf2,SubmitBtn,quitBtn,Canvas1,con,cur,root,labelFrame, lb1
     
     root = Tk()
     root.title("Library")
@@ -98,10 +121,16 @@ def returnBook():
         
     # Book ID to Delete
     lb1 = Label(labelFrame,text="Book ID : ", bg='black', fg='white')
-    lb1.place(relx=0.05,rely=0.5)
+    lb1.place(relx=0.05,rely=0.2)
         
     bookInfo1 = Entry(labelFrame)
-    bookInfo1.place(relx=0.3,rely=0.5, relwidth=0.62)
+    bookInfo1.place(relx=0.3,rely=0.2, relwidth=0.62)
+
+    lb2 = Label(labelFrame,text="Issued To : ", bg='black', fg='white')
+    lb2.place(relx=0.05,rely=0.4)
+        
+    inf2 = Entry(labelFrame)
+    inf2.place(relx=0.3,rely=0.4, relwidth=0.62)
     
     #Submit Button
     SubmitBtn = Button(root,text="Return",bg='#d1ccc0', fg='black',command=returnn)
