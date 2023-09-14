@@ -87,7 +87,7 @@ def returnn():
             root.destroy()
             return
     except:
-        messagebox.showinfo("Search Error","The value entered is wrong, Try again")
+        messagebox.showinfo("Error","The book id or user id is wrong, Try again")
     
     
     # allBid.clear()
@@ -126,7 +126,7 @@ def returnBook():
     bookInfo1 = Entry(labelFrame)
     bookInfo1.place(relx=0.3,rely=0.2, relwidth=0.62)
 
-    lb2 = Label(labelFrame,text="Issued To : ", bg='black', fg='white')
+    lb2 = Label(labelFrame,text="User Id: ", bg='black', fg='white')
     lb2.place(relx=0.05,rely=0.4)
         
     inf2 = Entry(labelFrame)

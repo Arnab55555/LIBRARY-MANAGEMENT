@@ -59,12 +59,12 @@ def Request():
         bookTable = "REQUESTED_BOOK" 
 
 
-        lb1= Label(base, text="BOOK Name", width=20, font=("arial",12))  
+        lb1= Label(base, text="Book Name", width=20, font=("arial",12))  
         lb1.place(x=150, y=120)  
         en1= Entry(base)  
         en1.place(x=500, y=120)  
         
-        lb3= Label(base, text="Enter BOOK-ID", width=20, font=("arial",12))  
+        lb3= Label(base, text="Author", width=20, font=("arial",12))  
         lb3.place(x=150, y=190)  
         en3= Entry(base)  
         en3.place(x=500, y=190)  
